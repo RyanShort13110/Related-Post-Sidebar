@@ -127,7 +127,7 @@ function iiq_related_by_primary_sc( $atts = [] ){
 						?>
 						<a href="<?php the_permalink(); ?>" class="cta-button related-post-button">
 							Read More
-							<img src="https://resmanprod.wpenginepowered.com/wp-content/uploads/2025/07/svg-arrow.svg" alt="Image inside of button - click here to visit post" class="button-arrow" />
+							<img src="<!-- Add link to little 'arrow' image url here, or just remove the img tag if not needed -->" alt="Image inside of button - click here to visit post" class="button-arrow" />
 						</a>
 					</div>
 				</a>
