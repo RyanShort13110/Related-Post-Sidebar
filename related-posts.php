@@ -1,6 +1,5 @@
 <?php
 
-
 // use [iiq_related_by_primary count="3" thumbs="1" title="Related Posts"] shortcode to add 'related posts' to single post pages
 
 // the primary category ID (try yoast first; fallback to first assigned category)
@@ -159,6 +158,5 @@ function iiq_related_by_primary_sc( $atts = [] ){
 	return trim( ob_get_clean() );
 }
 add_shortcode('iiq_related_by_primary','iiq_related_by_primary_sc');
-
 
 ?>
