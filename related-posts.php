@@ -1,5 +1,25 @@
 <?php
 
+
+// use [iiq_related_by_primary count="3" thumbs="1" title="Related Posts"] shortcode to add 'related posts' to single post pages
+
+// the primary category ID (try yoast first; fallback to first assigned category)
+function iiq_primary_cat_id( $post_id = 0 ){
+	$post_id = $post_id ?: get_the_ID();
+	if ( ! $post_id ) return 0;
+
+	// yoast primary category
+	if ( class_exists('WPSEO_Primary_Term') ) {
+		$yoast = new WPSEO_Primary_Term('category', $post_id);
+		$tid   = (int) $yoast->get_primary_term();
+		if ( $tid && ! is_wp_error($tid) ) return $tid;
+	}
+
+	// fallback - use first assigned category if no primary category is assigned
+	$terms = get_the_terms( $post_id, 'category' );
+	return ( ! empty( $terms ) && ! is_wp_error( $terms ) ) ? (int) $terms[0]->term_id : 0;
+}
+
 function iiq_related_by_primary_sc( $atts = [] ){
 	if ( ! is_singular() ) return '';
 
